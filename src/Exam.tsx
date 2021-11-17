@@ -190,8 +190,8 @@ const Exam = (props: any) => {
 
             {
                 isSubmit && <div>
-                    <h3 style={{backgroundColor: "green", padding: "10px"}}>Correct is {correct}</h3>
-                    <h3 style={{backgroundColor: "red", padding: "10px"}}>Wrong is {wrong}</h3>
+                    <h3 style={{color: "green", padding: "5px", margin: "0"}}>Correct is {correct}</h3>
+                    <h3 style={{color: "red", padding: "10px", margin: "0"}}>Wrong is {wrong}</h3>
                     <div
                         style={{
                             width: "400px",
