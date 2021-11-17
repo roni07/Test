@@ -121,8 +121,8 @@ const Exam = (props: any) => {
     const [qNumber, setQNumber] = useState(1);
     const [answer, setAnswer] = useState<IAnswer>({})
     const [isSubmit, setIsSubmit] = useState(false);
-    const [correct, setCorrect] = useState(0);
-    const [wrong, setWrong] = useState(0);
+    const [correct, setCorrect] = useState(2);
+    const [wrong, setWrong] = useState(3);
 
     const handleInputAnswer = (q: IQ, value: string, isChecked?: boolean): void => {
 
@@ -177,8 +177,8 @@ const Exam = (props: any) => {
 
     }
 
-    const percentage = (partialValue: number, totalValue: number) => {
-        return (100 * partialValue) / totalValue;
+    const deg = (a: number, b: number) => {
+        return (360 * a) / (a + b);
     }
 
     const q = qList[candidate.preferenceLang][qNumber - 1];
@@ -189,14 +189,17 @@ const Exam = (props: any) => {
             <h1>Exam Page</h1>
 
             {
-                isSubmit && <div>
+                !isSubmit && <div>
                     <h3 style={{backgroundColor: "green", padding: "10px"}}>Correct is {correct}</h3>
                     <h3 style={{backgroundColor: "red", padding: "10px"}}>Wrong is {wrong}</h3>
                     <div
                         style={{
                             width: "400px",
                             height: "400px",
-                            backgroundImage: `conic-gradient(red ${percentage(wrong, correct)}%, green ${100 - percentage(wrong, correct)}%)`,
+                            backgroundImage: `conic-gradient(
+                            green 0deg ${deg(correct, wrong)}deg, 
+                            red ${deg(correct, wrong)}deg 360deg)
+                            `,
                             borderRadius: "50%",
                             margin: "auto"
                         }}
